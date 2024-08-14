@@ -23,6 +23,11 @@ root.render(
                     }/>
                     <Route path="/books/:bookId" element={<Book/>} />
                 </Route>
+                <Route path="*" element={
+                    <main style={{padding:"1rem"}}>
+                        <p>گشتم نبود نگرد نیست</p>
+                    </main>
+                } />
             </Route>
         </Routes>
     </BrowserRouter>
