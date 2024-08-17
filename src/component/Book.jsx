@@ -1,7 +1,9 @@
-import {useParams} from "react-router-dom";
-import {getBook} from "../data/data";
+import {useParams,useNavigate,useLocation} from "react-router-dom";
+import {getBook,deleteBook} from "../data/data";
 
 const Book = () =>{
+    const navigate = useNavigate();
+    const location = useLocation();
     const params = useParams();
     const book = getBook(parseInt(params.bookId));
 
@@ -12,7 +14,10 @@ const Book = () =>{
                 <p>{book.name}</p>
                 <p>تاریخ انتشار {book.due}</p>
                 <p>
-                    <button>حذف کتاب</button>
+                    <button onClick={() => {
+                        deleteBook(book.number);
+                        navigate("/books"+location.search)
+                    }}>حذف کتاب</button>
                 </p>
             </main>
         )
